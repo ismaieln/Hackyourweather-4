@@ -51,7 +51,7 @@ export default function Forecast(props) {
           history.goBack();
         }}
       >
-        Go Back
+        &#65124; &#65124; &#65124; Go Back
       </p>
     </div>
   );
