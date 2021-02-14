@@ -46,9 +46,10 @@ export default function Forecast(props) {
         <Area type="monotone" dataKey="temp" stroke="#8884d8" fill="#8884d8" />
       </AreaChart>
       <p
-        className="h5 p-5 btn"
+        className="h5 p-5 btn fw-bold text-decoration-underline"
         onClick={() => {
           history.goBack();
+          props.showForm(true);
         }}
       >
         &#65124; &#65124; &#65124; Go Back

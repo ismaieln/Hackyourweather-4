@@ -10,6 +10,7 @@ function App() {
   const [isLoading, setLoading] = useState(false);
   const [hasValue, setValue] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
+  const [showForm, setShowForm] = useState(true);
 
   const fetchWeather = async (city) => {
     const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
@@ -45,6 +46,7 @@ function App() {
   }
   function showForecast(id) {
     setForecast(cities.filter((city) => city.city.id === id));
+    setShowForm(false);
   }
 
   return (
@@ -52,7 +54,7 @@ function App() {
       <div className="row justify-content-center">
         <h1 className="py-3 text-center">Wether</h1>
         <div className="card-size">
-          <Search onSubmit={(city) => fetchWeather(city)} />
+          {showForm && <Search onSubmit={(city) => fetchWeather(city)} />}
           {!hasValue && (
             <p className="fw-bold text-danger">
               The city name is empty, Please enter a correct city name
@@ -68,6 +70,7 @@ function App() {
               onRemove={removeCity}
               onClickForecast={showForecast}
               forecast={forecast}
+              formState={setShowForm}
             />
           )}
         </div>
